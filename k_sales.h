@@ -14,6 +14,7 @@ class k_sales : public QWidget
 public:
     explicit k_sales(QWidget *parent = nullptr);
     ~k_sales();
+    void set_num();
 
 signals:
     void upd();

@@ -1,12 +1,20 @@
 #include "user_m.h"
 #include "ui_user_m.h"
 #include "flights.h"
+#include "kas_m.h"
+#include <QtGui>
+#include <QInputDialog>
+#include <QLineEdit>
+#include <QMessageBox>
 
+QString user_m::text;
 user_m::user_m(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::user_m)
 {
     ui->setupUi(this);
+    us_fl = new us_flights;
+    connect(us_fl, &us_flights::exitpls, this, &user_m::show);
     ui->tableWidget_2->horizontalHeader()->setStretchLastSection(true);
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
@@ -41,4 +49,20 @@ void user_m::getTable()
         ui->tableWidget_2->setItem(i, 4, new QTableWidgetItem(QString::number(flights::f_db[i].seats)));
         ui->tableWidget_2->setItem(i, 5, new QTableWidgetItem(QString::number(flights::f_db[i].f_seats)));
     }
+}
+
+void user_m::on_flights_pa_clicked()
+{
+    user_m::text = QInputDialog::getText(this,
+    QString::fromUtf8("Введите необходимые данные"),
+    QString::fromUtf8("Даные паспорта без пробелов:"),
+    QLineEdit::Normal);
+    if (findPasport(user_m::text))
+    {
+        us_fl->show();
+        us_fl->pop_table();
+        this->close();
+    }
+    else
+        QMessageBox::warning(this, "Внимание","Введены неверные данные");
 }

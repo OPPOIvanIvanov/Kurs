@@ -61,7 +61,6 @@ kas_m::~kas_m()
 void kas_m::on_exits_clicked()
 {
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
-
     this->close();
     emit exitpls();
 }
@@ -98,6 +97,7 @@ void kas_m::on_sale_b_clicked()
     {
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);
         flight_sel = false;
+        k_s->set_num();
         k_s->show();
     }
 }

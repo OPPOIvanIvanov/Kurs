@@ -21,6 +21,7 @@ SOURCES += \
     mainwindow.cpp \
     passengers.cpp \
     reg.cpp \
+    us_flights.cpp \
     user_m.cpp \
     users_db.cpp
 
@@ -36,6 +37,7 @@ HEADERS += \
     mainwindow.h \
     passengers.h \
     reg.h \
+    us_flights.h \
     user_m.h \
     users_db.h
 
@@ -49,6 +51,7 @@ FORMS += \
     list_pass.ui \
     mainwindow.ui \
     reg.ui \
+    us_flights.ui \
     user_m.ui
 
 # Default rules for deployment.

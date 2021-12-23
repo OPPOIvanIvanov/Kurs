@@ -32,11 +32,11 @@ void save_to_txt(QTextStream& ost)
     }
 }
 
-bool find_pass(QString str)
+bool find_pass(QString str, QString str2)
 {
     for (int i = 0; i < kas_m::pass_db.size(); i++)
     {
-        if (kas_m::pass_db[i].passport == str)
+        if (kas_m::pass_db[i].passport == str && kas_m::pass_db[i].numb_fl == str2)
             return true;
     }
     return false;
@@ -50,4 +50,14 @@ void insert_pass(QString surname, QString name, QString patronymic, QString pass
     kas_m::pass_db[kas_m::pass_db.size() - 1].patronymic = patronymic;
     kas_m::pass_db[kas_m::pass_db.size() - 1].passport = passport;
     kas_m::pass_db[kas_m::pass_db.size() - 1].numb_fl = numb_fl;
+}
+
+bool findPasport(QString str)
+{
+    for (int i = 0; i < kas_m::pass_db.size(); i++)
+    {
+        if (kas_m::pass_db[i].passport == str)
+            return true;
+    }
+    return false;
 }

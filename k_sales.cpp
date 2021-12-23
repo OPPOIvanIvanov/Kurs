@@ -13,7 +13,6 @@ k_sales::k_sales(QWidget *parent) :
     ui(new Ui::k_sales)
 {
     ui->setupUi(this);
-    ui->num->setText(flights::f_db[kas_m::sel_fl].number);
 }
 
 k_sales::~k_sales()
@@ -23,7 +22,7 @@ k_sales::~k_sales()
 
 void k_sales::on_pushButton_clicked()
 {
-    if (!find_pass(ui->passport->text()) && !ui->name->text().isEmpty()
+    if (!find_pass(ui->passport->text(), ui->num->text()) && !ui->name->text().isEmpty()
             && !ui->famil->text().isEmpty() && !ui->name->text().isEmpty()
             && !ui->patr->text().isEmpty() && !ui->passport->text().isEmpty())
     {
@@ -48,7 +47,7 @@ void k_sales::on_pushButton_clicked()
       this->close();
     }
     else
-        if (find_pass(ui->passport->text()))
+        if (find_pass(ui->passport->text(), ui->num->text()))
         {
             QMessageBox::warning(this, "Внимание","Такой пассажир уже есть на данном рейсе");
         }
@@ -63,4 +62,9 @@ void k_sales::on_pushButton_clicked()
 void k_sales::on_pushButton_2_clicked()
 {
     this->close();
+}
+
+void k_sales::set_num()
+{
+    ui->num->setText(flights::f_db[kas_m::sel_fl].number);
 }

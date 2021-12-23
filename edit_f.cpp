@@ -26,7 +26,7 @@ void edit_f::on_pushButton_clicked()
     if ((!new_value || !find_fl(ui->num->text())) && !ui->num->text().isEmpty() &&
           !ui->count->text().isEmpty() && !ui->free->text().isEmpty()
             && !ui->from->text().isEmpty() && !ui->mark->text().isEmpty()
-            && !ui->to->text().isEmpty())
+            && !ui->to->text().isEmpty() && (ui->free->text() <= ui->count->text()))
     {
          if (mode)
          {
@@ -50,8 +50,12 @@ void edit_f::on_pushButton_clicked()
     else
             if (ui->num->text().isEmpty() || ui->count->text().isEmpty() ||
                     ui->free->text().isEmpty() || ui->from->text().isEmpty() ||
-                    ui->mark->text().isEmpty() || !ui->to->text().isEmpty())
+                    ui->mark->text().isEmpty() || ui->to->text().isEmpty())
                 QMessageBox::warning(this, "Внимание","Заполните пустые поля");
+    else
+            if (ui->free->text() > ui->count->text())
+               QMessageBox::warning(this, "Внимание",
+                               "Свободных мест не может быть больше общего числа мест");
 }
 
 void edit_f::create_f()
