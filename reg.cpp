@@ -22,6 +22,9 @@ void reg::on_accept_clicked()
     {
         st s = pass;
         insert(ui->lineEdit->text(), ui->lineEdit_2->text(), s);
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+        ui->lineEdit_3->clear();
         save();
         this->close();
         emit exitpls();
@@ -37,4 +40,13 @@ void reg::on_accept_clicked()
     else
             if (ui->lineEdit->text().isEmpty() || ui->lineEdit_2->text().isEmpty())
                 QMessageBox::warning(this, "Внимание","Заполните пустые поля");
+}
+
+void reg::on_undo_clicked()
+{
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
+    ui->lineEdit_3->clear();
+    this->close();
+    emit exitpls();
 }

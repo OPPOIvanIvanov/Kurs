@@ -78,7 +78,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Число свободных мест</string>
+     <string>Свободно мест</string>
     </property>
    </column>
   </widget>

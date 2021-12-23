@@ -17,7 +17,6 @@ public:
 void load_db(QTextStream& ost);
 void returnTicket(int indx);
 void save_to_txt(QTextStream& ost);
-/*bool find_us(QString str);
-void insert(QString n, QString p, st s);
-void save_text(QTextStream& ost);*/
+bool find_pass(QString str);
+void insert_pass(QString surname, QString name, QString patronymic, QString passport, QString numb_fl);
 #endif // PASSENGERS_H

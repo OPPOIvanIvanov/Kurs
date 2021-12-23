@@ -38,6 +38,8 @@ flights::~flights()
 
 void flights::on_pushButton_4_clicked()
 {
+    ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+    b = false;
     this->close();
     emit exitpls();
 }

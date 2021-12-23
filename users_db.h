@@ -24,7 +24,7 @@ public:
 };
 
 void load_data(QTextStream& ost);
-st get_status(QString str, QString str2);
+st get_status(QString str);
 bool find_us(QString str);
 void insert(QString n, QString p, st s);
 void save_text(QTextStream& ost);

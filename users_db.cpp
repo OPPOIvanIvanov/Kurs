@@ -31,11 +31,11 @@ void load_data(QTextStream &ost)
     }
 }
 
-st get_status(QString str, QString str2)
+st get_status(QString str)
 {
     for (int i = 0; i < MainWindow::dt.size(); i++)
     {
-        if (MainWindow::dt[i].name == str && MainWindow::dt[i].passw == str2)
+        if (MainWindow::dt[i].name == str)
             return MainWindow::dt[i].status;
     }
     return unknow;

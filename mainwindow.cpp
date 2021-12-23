@@ -4,6 +4,7 @@
 #include "QFile"
 #include "QTextStream"
 #include "QIODevice"
+#include "QMessageBox"
 
 QVector<users_db> MainWindow::dt;
 MainWindow::MainWindow(QWidget *parent)
@@ -31,40 +32,55 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
+    bool accept = false;
     QString str = ui->lineEdit->text();
     QString str2 = ui->lineEdit_2->text();
-    st stat = get_status(str, str2);
-    switch(stat)
+    for (int i = 0; i < MainWindow::dt.size(); i++)
     {
-    case pass:
-        u_m->show();
-        ui->lineEdit->clear();
-        ui->lineEdit_2->clear();
-        this->close();
-        break;
-    case kass:
-        k_m->plantTable();
-        k_m->show();
-        ui->lineEdit->clear();
-        ui->lineEdit_2->clear();
-        this->close();
-        break;
-    case admin:
-        a_m->settable();
-        a_m->show();
-        ui->lineEdit->clear();
-        ui->lineEdit_2->clear();
-        this->close();
-        break;
-    case unknow:
+        if (MainWindow::dt[i].passw == str2 && MainWindow::dt[i].name == str)
+        {
+            accept = true;
+            st stat = get_status(str);
+            switch(stat)
+            {
+            case pass:
+                u_m->show();
+                ui->lineEdit->clear();
+                ui->lineEdit_2->clear();
+                u_m->getTable();
+                this->close();
+                break;
+            case kass:
+                k_m->plantTable();
+                k_m->show();
+                ui->lineEdit->clear();
+                ui->lineEdit_2->clear();
+                this->close();
+                break;
+            case admin:
+                a_m->settable();
+                a_m->show();
+                ui->lineEdit->clear();
+                ui->lineEdit_2->clear();
+                this->close();
+                break;
+            case unknow:
 
-        break;
-    default:
+                break;
+            default:
 
-       break;
+               break;
+            }
+        }
+    }
+    if(!accept)
+    {
+        if (str.isEmpty() || str2.isEmpty())
+                QMessageBox::warning(this, "Внимание","Заполните пустые поля");
+        else
+                QMessageBox::warning(this, "Внимание","Неверное имя пользователя или пароль");
     }
 }
 

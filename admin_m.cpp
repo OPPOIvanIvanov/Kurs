@@ -52,6 +52,8 @@ admin_m::~admin_m()
 
 void admin_m::on_exits_clicked()
 {
+    ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+    selected = false;
     this->close();
     emit exitpls();
 }

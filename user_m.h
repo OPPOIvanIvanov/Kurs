@@ -14,6 +14,7 @@ class user_m : public QWidget
 public:
     explicit user_m(QWidget *parent = nullptr);
     ~user_m();
+    void getTable();
 
 signals:
     void exitpls();

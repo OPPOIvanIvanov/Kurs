@@ -31,3 +31,23 @@ void save_to_txt(QTextStream& ost)
                 << " " << kas_m::pass_db[i].numb_fl;
     }
 }
+
+bool find_pass(QString str)
+{
+    for (int i = 0; i < kas_m::pass_db.size(); i++)
+    {
+        if (kas_m::pass_db[i].passport == str)
+            return true;
+    }
+    return false;
+}
+
+void insert_pass(QString surname, QString name, QString patronymic, QString passport, QString numb_fl)
+{
+    kas_m::pass_db.resize(kas_m::pass_db.size() + 1);
+    kas_m::pass_db[kas_m::pass_db.size() - 1].surname = surname;
+    kas_m::pass_db[kas_m::pass_db.size() - 1].name = name;
+    kas_m::pass_db[kas_m::pass_db.size() - 1].patronymic = patronymic;
+    kas_m::pass_db[kas_m::pass_db.size() - 1].passport = passport;
+    kas_m::pass_db[kas_m::pass_db.size() - 1].numb_fl = numb_fl;
+}

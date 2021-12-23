@@ -45,9 +45,9 @@
    <widget class="QPushButton" name="accept">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>100</x>
       <y>260</y>
-      <width>331</width>
+      <width>231</width>
       <height>25</height>
      </rect>
     </property>
@@ -111,6 +111,19 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="undo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>260</y>
+      <width>81</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>отмена</string>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <passengers.h>
 #include <list_pass.h>
+#include <k_sales.h>
 
 namespace Ui {
 class kas_m;
@@ -30,9 +31,12 @@ private slots:
 
     void on_return_b_clicked();
 
+    void on_sale_b_clicked();
+
 private:
     Ui::kas_m *ui;
     list_pass *l_p;
+    k_sales *k_s;
 };
 
 #endif // KAS_M_H

@@ -16,8 +16,10 @@ kas_m::kas_m(QWidget *parent) :
 {
     ui->setupUi(this);
     l_p = new list_pass;
+    k_s = new k_sales;
     connect(l_p, &list_pass::exitpls, this, &kas_m::show);
     connect(l_p, &list_pass::upd, this, &kas_m::plantTable);
+    connect(k_s, &k_sales::upd, this, &kas_m::plantTable);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
@@ -58,6 +60,8 @@ kas_m::~kas_m()
 
 void kas_m::on_exits_clicked()
 {
+    ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+
     this->close();
     emit exitpls();
 }
@@ -79,7 +83,21 @@ void kas_m::on_return_b_clicked()
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);
         l_p->setPass();
         l_p->show();
-        sel_fl = false;
+        flight_sel = false;
         this->close();
+    }
+}
+
+void kas_m::on_sale_b_clicked()
+{
+    if (flight_sel == false)
+    {
+         QMessageBox::warning(this, "Внимание","Сначала выберите рейс");
+    }
+    else
+    {
+        ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+        flight_sel = false;
+        k_s->show();
     }
 }

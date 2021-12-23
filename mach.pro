@@ -14,6 +14,7 @@ SOURCES += \
     edit_us.cpp \
     flight_db.cpp \
     flights.cpp \
+    k_sales.cpp \
     kas_m.cpp \
     list_pass.cpp \
     main.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     edit_us.h \
     flight_db.h \
     flights.h \
+    k_sales.h \
     kas_m.h \
     list_pass.h \
     mainwindow.h \
@@ -42,6 +44,7 @@ FORMS += \
     edit_f.ui \
     edit_us.ui \
     flights.ui \
+    k_sales.ui \
     kas_m.ui \
     list_pass.ui \
     mainwindow.ui \

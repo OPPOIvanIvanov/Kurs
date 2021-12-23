@@ -22,6 +22,8 @@ signals:
 private slots:
     void on_accept_clicked();
 
+    void on_undo_clicked();
+
 private:
     Ui::reg *ui;
 };
