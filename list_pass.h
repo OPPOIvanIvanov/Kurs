@@ -14,6 +14,18 @@ class list_pass : public QWidget
 public:
     explicit list_pass(QWidget *parent = nullptr);
     ~list_pass();
+    void setPass();
+
+signals:
+    void exitpls();
+    void upd();
+
+private slots:
+    void on_back_clicked();
+
+    void on_tableWidget_cellClicked(int row);
+
+    void on_backup_clicked();
 
 private:
     Ui::list_pass *ui;

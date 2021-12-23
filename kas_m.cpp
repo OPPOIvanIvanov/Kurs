@@ -1,10 +1,11 @@
 #include "kas_m.h"
 #include "ui_kas_m.h"
 #include "flights.h"
-#include "QDebug"
 #include "QFile"
 #include "QTextStream"
 #include "QIODevice"
+#include "QMessageBox"
+#include "passengers.h"
 
 QVector<passengers> kas_m::pass_db;
 bool flight_sel;
@@ -14,6 +15,9 @@ kas_m::kas_m(QWidget *parent) :
     ui(new Ui::kas_m)
 {
     ui->setupUi(this);
+    l_p = new list_pass;
+    connect(l_p, &list_pass::exitpls, this, &kas_m::show);
+    connect(l_p, &list_pass::upd, this, &kas_m::plantTable);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
@@ -22,6 +26,11 @@ kas_m::kas_m(QWidget *parent) :
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Stretch);
+    QFile file_p("D:\\DB\\passengers.txt");
+    file_p.open(QIODevice::ReadOnly);
+    QTextStream ist(&file_p);
+    load_db(ist);
+    file_p.close();
 }
 
 void kas_m::plantTable()
@@ -61,9 +70,16 @@ void kas_m::on_tableWidget_cellClicked(int row)
 
 void kas_m::on_return_b_clicked()
 {
-    QFile file("D:\\DB\\passengers.txt");
-    file.open(QIODevice::ReadOnly|QIODevice::Text);
-    QTextStream ost(&file);
-    load_db(ost);
-    file.close();
+    if (flight_sel == false)
+    {
+         QMessageBox::warning(this, "Внимание","Сначала выберите рейс");
+    }
+    else
+    {
+        ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+        l_p->setPass();
+        l_p->show();
+        sel_fl = false;
+        this->close();
+    }
 }

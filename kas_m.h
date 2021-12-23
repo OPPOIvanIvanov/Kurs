@@ -32,6 +32,7 @@ private slots:
 
 private:
     Ui::kas_m *ui;
+    list_pass *l_p;
 };
 
 #endif // KAS_M_H

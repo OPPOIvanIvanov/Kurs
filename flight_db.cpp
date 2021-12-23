@@ -51,3 +51,13 @@ bool find_fl(QString number)
     }
     return false;
 }
+
+int find_indx(QString number)
+{
+    for (int i = 0; i < flights::f_db.size(); i++)
+    {
+        if (flights::f_db[i].number == number)
+            return i;
+    }
+    return -1;
+}

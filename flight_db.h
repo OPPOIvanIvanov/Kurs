@@ -20,6 +20,7 @@ public:
 void load_text(QTextStream& ost);
 void del_f(int index);
 void save_txt(QTextStream& ost);
+int find_indx(QString number);
 bool find_fl(QString number);
 void insert_fl(QString number, QString from, QString to, QString mark, int seats, int f_seats);
 

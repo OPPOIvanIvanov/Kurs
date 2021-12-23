@@ -33,7 +33,7 @@
     <string>Список пассажиров рейса</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="backup">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -81,7 +81,7 @@
     </property>
    </column>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
      <x>350</x>
