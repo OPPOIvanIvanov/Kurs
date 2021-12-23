@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
-    <height>382</height>
+    <width>1044</width>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>390</x>
      <y>0</y>
      <width>311</width>
      <height>41</height>
@@ -33,7 +33,7 @@
     <string>Управление рейсами</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="add_f">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -49,7 +49,7 @@
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>370</x>
      <y>300</y>
      <width>281</width>
      <height>25</height>
@@ -64,8 +64,8 @@
     <rect>
      <x>40</x>
      <y>40</y>
-     <width>791</width>
-     <height>192</height>
+     <width>951</width>
+     <height>191</height>
     </rect>
    </property>
    <column>
@@ -99,10 +99,10 @@
     </property>
    </column>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="del_f">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>380</x>
      <y>240</y>
      <width>261</width>
      <height>25</height>
@@ -112,10 +112,10 @@
     <string>Удалить</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="ed_f">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>730</x>
      <y>240</y>
      <width>261</width>
      <height>25</height>

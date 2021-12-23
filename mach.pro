@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     admin_m.cpp \
+    edit_f.cpp \
     edit_us.cpp \
     flight_db.cpp \
     flights.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     admin_m.h \
+    edit_f.h \
     edit_us.h \
     flight_db.h \
     flights.h \
@@ -33,6 +35,7 @@ HEADERS += \
 
 FORMS += \
     admin_m.ui \
+    edit_f.ui \
     edit_us.ui \
     flights.ui \
     kas_m.ui \

@@ -18,9 +18,9 @@ public:
 };
 
 void load_text(QTextStream& ost);
-/*bool find_us(QString str);
-void insert(QString n, QString p, st s);
-void save_text(QTextStream& ost);
-void del(int index);*/
+void del_f(int index);
+void save_txt(QTextStream& ost);
+bool find_fl(QString number);
+void insert_fl(QString number, QString from, QString to, QString mark, int seats, int f_seats);
 
 #endif // FLIGHT_DB_H

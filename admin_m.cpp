@@ -105,6 +105,7 @@ void admin_m::on_change_clicked()
 
 void admin_m::on_pushButton_3_clicked()
 {
+    f_m->settable();
     f_m->show();
     this->close();
 }
