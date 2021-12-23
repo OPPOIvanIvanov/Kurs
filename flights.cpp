@@ -69,7 +69,7 @@ void flights::on_del_f_clicked()
 {
     if (b == false)
     {
-         QMessageBox::warning(this, "Внимание","Сначала выберите пользователя");
+         QMessageBox::warning(this, "Внимание","Выберите рейс");
     }
     else {
     QMessageBox::StandardButton reply;
@@ -83,6 +83,7 @@ void flights::on_del_f_clicked()
           del_f(flights::row_s);
           save_f();
           b = false;
+
     }
     }
 }
@@ -104,6 +105,15 @@ void flights::on_add_f_clicked()
 
 void flights::on_ed_f_clicked()
 {
-    e_f->show();
-    e_f->change_f();
+    if (!b)
+    {
+        QMessageBox::warning(this, "Внимание", "Сначала выберите рейс");
+    }
+    else
+    {
+        ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+        e_f->show();
+        e_f->change_f();
+        b = false;
+    }
 }

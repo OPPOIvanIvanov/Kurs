@@ -4,6 +4,7 @@
 #include "QMessageBox"
 
 bool ed;
+QString name;
 edit_us::edit_us(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::edit_us)
@@ -18,7 +19,10 @@ edit_us::~edit_us()
 
 void edit_us::on_ok_clicked()
 {
-    if ((ed || !find_us(ui->name_us->text())) && !ui->pssw->text().isEmpty() &&
+    bool changed = true;
+    if (ui->name_us->text() == name)
+        changed = false;
+    if ((!changed || !find_us(ui->name_us->text())) && !ui->pssw->text().isEmpty() &&
             !ui->name_us->text().isEmpty())
     {
         st status = unknow;
@@ -43,7 +47,7 @@ void edit_us::on_ok_clicked()
          emit upd();
     }
     else
-        if (!ed && find_us(ui->name_us->text()))
+        if (changed && find_us(ui->name_us->text()))
          QMessageBox::warning(this, "Внимание","Имя пользователя занято");
     else
             if (ui->pssw->text().isEmpty()||ui->name_us->text().isEmpty())
@@ -80,5 +84,6 @@ void edit_us::edit()
      default:
          break;
      }
+     name = ui->name_us->text();
      ed = true;
 }

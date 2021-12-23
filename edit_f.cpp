@@ -5,6 +5,7 @@
 #include "QMessageBox"
 
 bool mode;
+QString str;
 edit_f::edit_f(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::edit_f)
@@ -19,7 +20,10 @@ edit_f::~edit_f()
 
 void edit_f::on_pushButton_clicked()
 {
-    if ((mode || !find_fl(ui->num->text())) && !ui->num->text().isEmpty() &&
+    bool new_value = true;
+    if (ui->num->text() == str)
+        new_value == false;
+    if ((!new_value || !find_fl(ui->num->text())) && !ui->num->text().isEmpty() &&
           !ui->count->text().isEmpty() && !ui->free->text().isEmpty()
             && !ui->from->text().isEmpty() && !ui->mark->text().isEmpty()
             && !ui->to->text().isEmpty())
@@ -31,12 +35,18 @@ void edit_f::on_pushButton_clicked()
          insert_fl(ui->num->text(), ui->from->text(), ui->to->text(),
                    ui->mark->text(), ui->count->text().toInt(), ui->free->text().toInt());
          save_f();
+         ui->count->clear();
+         ui->free->clear();
+         ui->from->clear();
+         ui->mark->clear();
+         ui->num->clear();
+         ui->to->clear();
          this->close();
          emit upd();
     }
     else
-        if (!mode && find_fl(ui->num->text()))
-         QMessageBox::warning(this, "Внимание","Имя пользователя занято");
+        if (new_value && find_fl(ui->num->text()))
+         QMessageBox::warning(this, "Внимание","Номер рейса занят");
     else
             if (ui->num->text().isEmpty() || ui->count->text().isEmpty() ||
                     ui->free->text().isEmpty() || ui->from->text().isEmpty() ||
@@ -54,6 +64,7 @@ void edit_f::change_f()
 
 {
     ui->label_7->setText("Редактирование рейса");
+    str = flights::f_db[flights::row_s].number;
     mode = true;
     ui->num->setText(flights::f_db[flights::row_s].number);
     ui->from->setText(flights::f_db[flights::row_s].from);

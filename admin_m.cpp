@@ -98,8 +98,10 @@ void admin_m::on_change_clicked()
     }
     else
     {
+    ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     e_u->edit();
     e_u->show();
+    selected = false;
     }
 }
 
