@@ -15,8 +15,10 @@ SOURCES += \
     flight_db.cpp \
     flights.cpp \
     kas_m.cpp \
+    list_pass.cpp \
     main.cpp \
     mainwindow.cpp \
+    passengers.cpp \
     reg.cpp \
     user_m.cpp \
     users_db.cpp
@@ -28,7 +30,9 @@ HEADERS += \
     flight_db.h \
     flights.h \
     kas_m.h \
+    list_pass.h \
     mainwindow.h \
+    passengers.h \
     reg.h \
     user_m.h \
     users_db.h
@@ -39,6 +43,7 @@ FORMS += \
     edit_us.ui \
     flights.ui \
     kas_m.ui \
+    list_pass.ui \
     mainwindow.ui \
     reg.ui \
     user_m.ui

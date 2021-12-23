@@ -21,7 +21,6 @@ admin_m::admin_m(QWidget *parent) :
 }
 void admin_m::settable()
 {
-    ui->tableWidget->clear();
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);

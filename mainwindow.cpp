@@ -46,6 +46,7 @@ void MainWindow::on_pushButton_clicked()
         this->close();
         break;
     case kass:
+        k_m->plantTable();
         k_m->show();
         ui->lineEdit->clear();
         ui->lineEdit_2->clear();

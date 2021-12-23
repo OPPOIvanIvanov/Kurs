@@ -22,7 +22,7 @@ void edit_f::on_pushButton_clicked()
 {
     bool new_value = true;
     if (ui->num->text() == str)
-        new_value == false;
+        new_value = false;
     if ((!new_value || !find_fl(ui->num->text())) && !ui->num->text().isEmpty() &&
           !ui->count->text().isEmpty() && !ui->free->text().isEmpty()
             && !ui->from->text().isEmpty() && !ui->mark->text().isEmpty()
