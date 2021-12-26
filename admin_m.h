@@ -13,27 +13,23 @@ class admin_m : public QWidget
     Q_OBJECT
 
 signals:
-    void exitpls();
+    void PreviousWindow();
 
 public:
     explicit admin_m(QWidget *parent = nullptr);
     ~admin_m();
-    void settable();
+    void SeTtable();
 
     static int row_sel;
 
 private slots:
-    void on_exits_clicked();
 
-    void on_deleteButton_clicked();
-
-    void on_tableWidget_cellClicked(int row);
-
-    void on_addButton_clicked();
-
-    void on_change_clicked();
-
-    void on_pushButton_3_clicked();
+    void OnExitsClicked();
+    void OnDeleteButtonClicked();
+    void OnTableWidgetCellClicked(int row);
+    void OnAddButtonClicked();
+    void OnChangeClicked();
+    void FlightManagement();
 
 private:
     Ui::admin_m *ui;

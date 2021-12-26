@@ -14,12 +14,12 @@ class us_flights : public QWidget
 public:
     explicit us_flights(QWidget *parent = nullptr);
     ~us_flights();
-    void pop_table();
+    void SetFlightsTable();
 signals:
-    void exitpls();
+    void BackButton();
 
 private slots:
-    void on_pushButton_clicked();
+    void OnBackButtonClicked();
 
 private:
     Ui::us_flights *ui;

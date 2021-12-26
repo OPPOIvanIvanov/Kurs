@@ -30,49 +30,49 @@ list_pass::~list_pass()
     delete ui;
 }
 
-void list_pass::on_back_clicked()
+void list_pass::OnBackClicked()
 {
     QFile file_f("D:\\DB.\\flights.txt");
     QFile::remove("D:\\DB\\flights.txt");
     file_f.open(QIODevice::WriteOnly);
     QTextStream ost_f(&file_f);
-    save_txt(ost_f);
+    SaveDataToText(ost_f);
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     pass_sel = false;
-    emit upd();
+    emit UpdatePassengersTable();
     this->close();
-    emit exitpls();
+    emit LeaveButton();
 }
-void list_pass::setPass()
+void list_pass::SetPassengersTable()
 {
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     ui->tableWidget->horizontalHeader()->setVisible(true);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
-    for (int i = 0; i < kas_m::pass_db.size(); i++)
+    for (int i = 0; i < kas_m::passengers_data_base.size(); i++)
     {
         int j = 0;
-        if (kas_m::pass_db[i].numb_fl == flights::f_db[kas_m::sel_fl].number)
+        if (kas_m::passengers_data_base[i].numb_flight_ == flights::f_db[kas_m::selected_flight].number_)
         {
         ui->tableWidget->insertRow(j);
-        ui->tableWidget->setItem(j, 0, new QTableWidgetItem(kas_m::pass_db[i].surname));
-        ui->tableWidget->setItem(j, 1, new QTableWidgetItem(kas_m::pass_db[i].name));
-        ui->tableWidget->setItem(j, 2, new QTableWidgetItem(kas_m::pass_db[i].patronymic));
-        ui->tableWidget->setItem(j, 3, new QTableWidgetItem(kas_m::pass_db[i].passport));
-        ui->tableWidget->setItem(j, 4, new QTableWidgetItem(kas_m::pass_db[i].numb_fl));
+        ui->tableWidget->setItem(j, 0, new QTableWidgetItem(kas_m::passengers_data_base[i].surname_));
+        ui->tableWidget->setItem(j, 1, new QTableWidgetItem(kas_m::passengers_data_base[i].name_));
+        ui->tableWidget->setItem(j, 2, new QTableWidgetItem(kas_m::passengers_data_base[i].patronymic_));
+        ui->tableWidget->setItem(j, 3, new QTableWidgetItem(kas_m::passengers_data_base[i].passport_));
+        ui->tableWidget->setItem(j, 4, new QTableWidgetItem(kas_m::passengers_data_base[i].numb_flight_));
         j++;
         }
     }
 
 }
 
-void list_pass::on_tableWidget_cellClicked(int row)
+void list_pass::OnTableWidgetCellClicked(int row)
 {
     pass_row = row;
     pass_sel = true;
 }
 
-void list_pass::on_backup_clicked()
+void list_pass::OnBackupClicked()
 {
     if (pass_sel == false)
     {
@@ -87,14 +87,14 @@ void list_pass::on_backup_clicked()
     {
           ui->tableWidget->setFocusPolicy(Qt::NoFocus);
           ui->tableWidget->removeRow(pass_row);
-          flights::f_db[find_indx(kas_m::pass_db[pass_row].numb_fl)].f_seats++;
-          returnTicket(kas_m::sel_fl);
+          flights::f_db[FindIndexFromNumber(kas_m::passengers_data_base[pass_row].numb_flight_)].free_seats++;
+          ReturnTicket(kas_m::selected_flight);
           pass_sel = false;
           QFile file("D:\\DB.\\passengers.txt");
           QFile::remove("D:\\DB\\passengers.txt");
           file.open(QIODevice::WriteOnly);
           QTextStream ost(&file);
-          save_to_txt(ost);
+          SaveToTxt(ost);
           file.close();
     }
     }

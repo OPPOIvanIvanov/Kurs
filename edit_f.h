@@ -15,16 +15,15 @@ public:
     explicit edit_f(QWidget *parent = nullptr);
     ~edit_f();
 
-    void create_f();
-    void change_f();
+    void CreateFlight();
+    void ChangeFlightt();
 
 signals:
-    void upd();
+    void UpdateTable();
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
+    void OkButton();
+    void CloseButton();
 
 private:
     Ui::edit_f *ui;

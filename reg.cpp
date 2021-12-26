@@ -15,22 +15,22 @@ reg::~reg()
     delete ui;
 }
 
-void reg::on_accept_clicked()
+void reg::OnAcceptClicked()
 {
-    if (!find_us(ui->lineEdit->text()) && (ui->lineEdit_2->text() == ui->lineEdit_3->text())
+    if (!FindUser(ui->lineEdit->text()) && (ui->lineEdit_2->text() == ui->lineEdit_3->text())
             && !ui->lineEdit->text().isEmpty() && !ui->lineEdit_2->text().isEmpty())
     {
         st s = pass;
-        insert(ui->lineEdit->text(), ui->lineEdit_2->text(), s);
+        InsertUser(ui->lineEdit->text(), ui->lineEdit_2->text(), s);
         ui->lineEdit->clear();
         ui->lineEdit_2->clear();
         ui->lineEdit_3->clear();
-        save();
+        SaveData();
         this->close();
-        emit exitpls();
+        emit BackButton();
     }
     else
-        if (find_us(ui->lineEdit->text()))
+        if (FindUser(ui->lineEdit->text()))
         {
             QMessageBox::warning(this, "Внимание","Такой пользователь уже существует");
         }
@@ -42,11 +42,11 @@ void reg::on_accept_clicked()
                 QMessageBox::warning(this, "Внимание","Заполните пустые поля");
 }
 
-void reg::on_undo_clicked()
+void reg::OnUndoClicked()
 {
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
     ui->lineEdit_3->clear();
     this->close();
-    emit exitpls();
+    emit BackButton();
 }

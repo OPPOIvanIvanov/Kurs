@@ -14,15 +14,14 @@ class k_sales : public QWidget
 public:
     explicit k_sales(QWidget *parent = nullptr);
     ~k_sales();
-    void set_num();
+    void SetNumberFlight();
 
 signals:
-    void upd();
+    void UpdateFlightsTable();
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
+    void OnOkButtonClicked();
+    void OnBackButtonClicked();
 
 private:
     Ui::k_sales *ui;

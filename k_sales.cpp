@@ -20,34 +20,34 @@ k_sales::~k_sales()
     delete ui;
 }
 
-void k_sales::on_pushButton_clicked()
+void k_sales::OnOkButtonClicked()
 {
-    if (!find_pass(ui->passport->text(), ui->num->text()) && !ui->name->text().isEmpty()
+    if (!FindPassengers(ui->passport->text(), ui->num->text()) && !ui->name->text().isEmpty()
             && !ui->famil->text().isEmpty() && !ui->name->text().isEmpty()
             && !ui->patr->text().isEmpty() && !ui->passport->text().isEmpty())
     {
-      insert_pass(ui->famil->text(), ui->name->text(), ui->patr->text(),
+      InsertPassengers(ui->famil->text(), ui->name->text(), ui->patr->text(),
                   ui->passport->text(), ui->num->text());
       QFile file("D:\\DB.\\passengers.txt");
       QFile::remove("D:\\DB\\passengers.txt");
       file.open(QIODevice::WriteOnly);
       QTextStream ost(&file);
-      flights::f_db[kas_m::sel_fl].f_seats--;
-      save_to_txt(ost);
+      flights::f_db[kas_m::selected_flight].free_seats--;
+      SaveToTxt(ost);
       ui->name->clear();
       ui->famil->clear();
       ui->num->clear();
       ui->patr->clear();
       ui->passport->clear();
-      emit upd();
+      emit UpdateFlightsTable();
       QFile file_f("D:\\DB.\\flights.txt");
       file_f.open(QIODevice::WriteOnly);
       QTextStream ost_f(&file_f);
-      save_txt(ost_f);
+      SaveDataToText(ost_f);
       this->close();
     }
     else
-        if (find_pass(ui->passport->text(), ui->num->text()))
+        if (FindPassengers(ui->passport->text(), ui->num->text()))
         {
             QMessageBox::warning(this, "Внимание","Такой пассажир уже есть на данном рейсе");
         }
@@ -59,12 +59,12 @@ void k_sales::on_pushButton_clicked()
         }
 }
 
-void k_sales::on_pushButton_2_clicked()
+void k_sales::OnBackButtonClicked()
 {
     this->close();
 }
 
-void k_sales::set_num()
+void k_sales::SetNumberFlight()
 {
-    ui->num->setText(flights::f_db[kas_m::sel_fl].number);
+    ui->num->setText(flights::f_db[kas_m::selected_flight].number_);
 }

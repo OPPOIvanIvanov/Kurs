@@ -14,20 +14,21 @@ enum st // создание перечисляемого типа enum
     unknow
 };
 
-class users_db
+class UsersDataBase
 {
 public:
-    users_db();
-    QString name;
-    QString passw;
-    st status;
+    UsersDataBase();
+    QString name_;
+    QString passw_;
+    st status_;
 };
 
-void load_data(QTextStream& ost);
-st get_status(QString str);
-bool find_us(QString str);
-void insert(QString n, QString p, st s);
-void save_text(QTextStream& ost);
-void del(int index);
+void LoadDataBaseUsers(QTextStream& ost);
+void InsertUser(QString n, QString p, st s);
+void SaveToText(QTextStream& ost);
+bool FindUser(QString str);
+void DeleteUser(int index);
+st FindStatus(QString str);
+QString GetStatus(st status);
 
 #endif // USERS_DB_H

@@ -15,15 +15,14 @@ class user_m : public QWidget
 public:
     explicit user_m(QWidget *parent = nullptr);
     ~user_m();
-    void getTable();
+    void GetTable();
 static QString text;
 signals:
-    void exitpls();
+    void BackButton();
 
 private slots:
-    void on_exits_clicked();
-
-    void on_flights_pa_clicked();
+    void OnExitsClicked();
+    void OnFlightsPaClicked();
 
 private:
     Ui::user_m *ui;

@@ -8,7 +8,7 @@
 namespace Ui {
 class flights;
 }
-class flight_db;
+class FlightDataBase;
 class flights : public QWidget
 {
     Q_OBJECT
@@ -17,29 +17,25 @@ public:
     explicit flights(QWidget *parent = nullptr);
     ~flights();
 
-void settable();
+void SetTable();
 
-    static QVector <flight_db> f_db;
+    static QVector <FlightDataBase> f_db;
     static int row_s;
 
 
 signals:
-    void exitpls();
+    void PreviousWindow();
 
 private slots:
-    void on_pushButton_4_clicked();
-
-    void on_tableWidget_cellClicked(int row);
-
-    void on_del_f_clicked();
-
-    void on_add_f_clicked();
-
-    void on_ed_f_clicked();
+    void UsersManagement();
+    void OnTableWidgetCellClicked(int row);
+    void OnDelFClicked();
+    void OnAddFClicked();
+    void OnEdFClicked();
 
 private:
     Ui::flights *ui;
     edit_f * e_f;
 };
-void save_f();
+void SaveFlight();
 #endif // FLIGHTS_H

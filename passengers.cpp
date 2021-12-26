@@ -2,61 +2,61 @@
 #include "kas_m.h"
 #include "QDebug"
 
-void load_db(QTextStream& ost)
+void LoadFlightsDataBase(QTextStream& ost)
 {
     int i = 0;
      while(!ost.atEnd())
      {
-         kas_m::pass_db.resize(i + 1);
-         ost >> kas_m::pass_db[i].surname >> kas_m::pass_db[i].name
-                 >> kas_m::pass_db[i].patronymic >> kas_m::pass_db[i].passport
-                 >> kas_m::pass_db[i].numb_fl;
+         kas_m::passengers_data_base.resize(i + 1);
+         ost >> kas_m::passengers_data_base[i].surname_ >> kas_m::passengers_data_base[i].name_
+                 >> kas_m::passengers_data_base[i].patronymic_ >> kas_m::passengers_data_base[i].passport_
+                 >> kas_m::passengers_data_base[i].numb_flight_;
                   i++;
      }
 }
 
-void returnTicket(int indx)
+void ReturnTicket(int indx)
 {
-    kas_m::pass_db.erase(kas_m::pass_db.begin() + indx);
+    kas_m::passengers_data_base.erase(kas_m::passengers_data_base.begin() + indx);
 }
 
-void save_to_txt(QTextStream& ost)
+void SaveToTxt(QTextStream& ost)
 {
-    for (int i = 0; i < kas_m::pass_db.size(); i++)
+    for (int i = 0; i < kas_m::passengers_data_base.size(); i++)
     {
         if (i != 0)
             ost << "\n";
-        ost << kas_m::pass_db[i].surname << " " << kas_m::pass_db[i].name
-                << " " << kas_m::pass_db[i].patronymic << " " << kas_m::pass_db[i].passport
-                << " " << kas_m::pass_db[i].numb_fl;
+        ost << kas_m::passengers_data_base[i].surname_ << " " << kas_m::passengers_data_base[i].name_
+                << " " << kas_m::passengers_data_base[i].patronymic_ << " " << kas_m::passengers_data_base[i].passport_
+                << " " << kas_m::passengers_data_base[i].numb_flight_;
     }
 }
 
-bool find_pass(QString str, QString str2)
+bool FindPassengers(QString str, QString str2)
 {
-    for (int i = 0; i < kas_m::pass_db.size(); i++)
+    for (int i = 0; i < kas_m::passengers_data_base.size(); i++)
     {
-        if (kas_m::pass_db[i].passport == str && kas_m::pass_db[i].numb_fl == str2)
+        if (kas_m::passengers_data_base[i].passport_ == str && kas_m::passengers_data_base[i].numb_flight_ == str2)
             return true;
     }
     return false;
 }
 
-void insert_pass(QString surname, QString name, QString patronymic, QString passport, QString numb_fl)
+void InsertPassengers(QString surname, QString name, QString patronymic, QString passport, QString numb_fl)
 {
-    kas_m::pass_db.resize(kas_m::pass_db.size() + 1);
-    kas_m::pass_db[kas_m::pass_db.size() - 1].surname = surname;
-    kas_m::pass_db[kas_m::pass_db.size() - 1].name = name;
-    kas_m::pass_db[kas_m::pass_db.size() - 1].patronymic = patronymic;
-    kas_m::pass_db[kas_m::pass_db.size() - 1].passport = passport;
-    kas_m::pass_db[kas_m::pass_db.size() - 1].numb_fl = numb_fl;
+    kas_m::passengers_data_base.resize(kas_m::passengers_data_base.size() + 1);
+    kas_m::passengers_data_base[kas_m::passengers_data_base.size() - 1].surname_ = surname;
+    kas_m::passengers_data_base[kas_m::passengers_data_base.size() - 1].name_ = name;
+    kas_m::passengers_data_base[kas_m::passengers_data_base.size() - 1].patronymic_ = patronymic;
+    kas_m::passengers_data_base[kas_m::passengers_data_base.size() - 1].passport_ = passport;
+    kas_m::passengers_data_base[kas_m::passengers_data_base.size() - 1].numb_flight_ = numb_fl;
 }
 
-bool findPasport(QString str)
+bool FindPasport(QString str)
 {
-    for (int i = 0; i < kas_m::pass_db.size(); i++)
+    for (int i = 0; i < kas_m::passengers_data_base.size(); i++)
     {
-        if (kas_m::pass_db[i].passport == str)
+        if (kas_m::passengers_data_base[i].passport_ == str)
             return true;
     }
     return false;

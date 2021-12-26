@@ -17,12 +17,12 @@ edit_us::~edit_us()
     delete ui;
 }
 
-void edit_us::on_ok_clicked()
+void edit_us::OnOkClicked()
 {
     bool changed = true;
     if (ui->name_us->text() == name)
         changed = false;
-    if ((!changed || !find_us(ui->name_us->text())) && !ui->pssw->text().isEmpty() &&
+    if ((!changed || !FindUser(ui->name_us->text())) && !ui->pssw->text().isEmpty() &&
             !ui->name_us->text().isEmpty())
     {
         st status = unknow;
@@ -36,54 +36,41 @@ void edit_us::on_ok_clicked()
                     status = admin;
          if (ed)
          {
-             del(admin_m::row_sel);
+             DeleteUser(admin_m::row_sel);
          }
-         insert(ui->name_us->text(), ui->pssw->text(), status);
-         save();
+         InsertUser(ui->name_us->text(), ui->pssw->text(), status);
+         SaveData();
          ui->name_us->clear();
          ui->pssw->clear();
          ed = false;
          this->close();
-         emit upd();
+         emit UpdateUsersTable();
     }
     else
-        if (changed && find_us(ui->name_us->text()))
+        if (changed && FindUser(ui->name_us->text()))
          QMessageBox::warning(this, "Внимание","Имя пользователя занято");
     else
             if (ui->pssw->text().isEmpty()||ui->name_us->text().isEmpty())
                 QMessageBox::warning(this, "Внимание","Заполните пустые поля");
 }
 
-void edit_us::on_exit_clicked()
+void edit_us::OnExitClicked()
 {
     ui->name_us->clear();
     ui->pssw->clear();
     this->close();
 
 }
-void edit_us::create()
+void edit_us::AddUser()
 {
     ui->label_4->setText("Добавление пользователя");
 }
-void edit_us::edit()
+void edit_us::EditUser()
 {
      ui->label_4->setText("Редактирование пользователя");
-     ui->name_us->setText(MainWindow::dt[admin_m::row_sel].name);
-     ui->pssw->setText(MainWindow::dt[admin_m::row_sel].passw);
-     switch(MainWindow::dt[admin_m::row_sel].status)
-     {
-     case pass:
-         ui->comboBox->setCurrentText("Пассажир");
-         break;
-     case kass:
-          ui->comboBox->setCurrentText("Кассир");
-         break;
-     case admin:
-        ui->comboBox->setCurrentText("Администратор");
-         break;
-     default:
-         break;
-     }
+     ui->name_us->setText(MainWindow::dt[admin_m::row_sel].name_);
+     ui->pssw->setText(MainWindow::dt[admin_m::row_sel].passw_);
+     ui->comboBox->setCurrentText(GetStatus(MainWindow::dt[admin_m::row_sel].status_));
      name = ui->name_us->text();
      ed = true;
 }

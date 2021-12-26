@@ -8,14 +8,14 @@
 
 bool b;
 int flights::row_s;
-QVector<flight_db> flights::f_db;
+QVector<FlightDataBase> flights::f_db;
 flights::flights(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::flights)
 {
     ui->setupUi(this);
     e_f = new edit_f;
-    connect(e_f, &edit_f::upd, this, &flights::settable);
+    connect(e_f, &edit_f::UpdateTable, this, &flights::SetTable);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
@@ -27,7 +27,7 @@ flights::flights(QWidget *parent) :
     QFile file("D:\\DB\\flights.txt");
     file.open(QIODevice::ReadOnly);
     QTextStream ost(&file);
-    load_text(ost);
+    LoadFlightDataBase(ost);
     file.close();
 }
 
@@ -36,14 +36,14 @@ flights::~flights()
     delete ui;
 }
 
-void flights::on_pushButton_4_clicked()
+void flights::UsersManagement()
 {
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     b = false;
     this->close();
-    emit exitpls();
+    emit PreviousWindow();
 }
-void flights::settable()
+void flights::SetTable()
 {
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
@@ -51,22 +51,22 @@ void flights::settable()
     for (int i = 0; i < flights::f_db.size(); i++)
     {
         ui->tableWidget->insertRow(i);
-        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(flights::f_db[i].number));
-        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(flights::f_db[i].from));
-        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(flights::f_db[i].to));
-        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(flights::f_db[i].mark));
-        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(flights::f_db[i].seats)));
-        ui->tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(flights::f_db[i].f_seats)));
+        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(flights::f_db[i].number_));
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(flights::f_db[i].from_));
+        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(flights::f_db[i].to_));
+        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(flights::f_db[i].mark_));
+        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(flights::f_db[i].seats_)));
+        ui->tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(flights::f_db[i].free_seats)));
     }
 }
 
-void flights::on_tableWidget_cellClicked(int row)
+void flights::OnTableWidgetCellClicked(int row)
 {
     row_s = row;
     b = true;
 }
 
-void flights::on_del_f_clicked()
+void flights::OnDelFClicked()
 {
     if (b == false)
     {
@@ -81,30 +81,30 @@ void flights::on_del_f_clicked()
     {
           ui->tableWidget->setFocusPolicy(Qt::NoFocus);
           ui->tableWidget->removeRow(flights::row_s);
-          del_f(flights::row_s);
-          save_f();
+          DeleteFlight(flights::row_s);
+          SaveFlight();
           b = false;
 
     }
     }
 }
-void save_f()
+void SaveFlight()
 {
     QFile file("D:\\DB.\\flights.txt");
     QFile::remove("D:\\DB\\flights.txt");
     file.open(QIODevice::WriteOnly);
     QTextStream ost(&file);
-    save_txt(ost);
+    SaveDataToText(ost);
     file.close();
 }
 
-void flights::on_add_f_clicked()
+void flights::OnAddFClicked()
 {
     e_f->show();
-    e_f->create_f();
+    e_f->CreateFlight();
 }
 
-void flights::on_ed_f_clicked()
+void flights::OnEdFClicked()
 {
     if (!b)
     {
@@ -114,7 +114,7 @@ void flights::on_ed_f_clicked()
     {
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);
         e_f->show();
-        e_f->change_f();
+        e_f->ChangeFlightt();
         b = false;
     }
 }

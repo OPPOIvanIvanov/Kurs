@@ -12,7 +12,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class users_db;
+class UsersDataBase;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -20,12 +20,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    static QVector<users_db> dt;
+    static QVector<UsersDataBase> dt;
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
+    void OnLogInButtonClicked();
+    void OnRegistrationButtonClicked();
 
 private:
     Ui::MainWindow *ui;
@@ -35,5 +34,5 @@ private:
     reg *r;
 
 };
-    void save();
+    void SaveData();
 #endif // MAINWINDOW_H

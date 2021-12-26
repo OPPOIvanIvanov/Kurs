@@ -14,12 +14,12 @@ admin_m::admin_m(QWidget *parent) :
     ui->setupUi(this);
     e_u = new edit_us;
     f_m = new flights;
-    connect(e_u, &edit_us::upd, this, &admin_m::settable);
-    connect(f_m, &flights::exitpls, this, &admin_m::show);
+    connect(e_u, &edit_us::UpdateUsersTable, this, &admin_m::SeTtable);
+    connect(f_m, &flights::PreviousWindow, this, &admin_m::show);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 }
-void admin_m::settable()
+void admin_m::SeTtable()
 {
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
@@ -27,21 +27,8 @@ void admin_m::settable()
      for (int i = 0; i < MainWindow::dt.size(); i++)
      {
          ui->tableWidget->insertRow(i);
-         ui->tableWidget->setItem(i, 0, new QTableWidgetItem(MainWindow::dt[i].name));
-         switch(MainWindow::dt[i].status)
-         {
-         case pass:
-             ui->tableWidget->setItem(i, 1, new QTableWidgetItem("Пассажир"));
-             break;
-         case kass:
-              ui->tableWidget->setItem(i, 1, new QTableWidgetItem("Кассир"));
-             break;
-         case admin:
-            ui->tableWidget->setItem(i, 1, new QTableWidgetItem("Администратор"));
-             break;
-         default:
-             break;
-         }
+         ui->tableWidget->setItem(i, 0, new QTableWidgetItem(MainWindow::dt[i].name_));
+         ui->tableWidget->setItem(i, 1, new QTableWidgetItem(GetStatus(MainWindow::dt[i].status_)));
      }
 }
 admin_m::~admin_m()
@@ -50,15 +37,15 @@ admin_m::~admin_m()
     delete ui;
 }
 
-void admin_m::on_exits_clicked()
+void admin_m::OnExitsClicked()
 {
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     selected = false;
     this->close();
-    emit exitpls();
+    emit PreviousWindow();
 }
 
-void admin_m::on_deleteButton_clicked()
+void admin_m::OnDeleteButtonClicked()
 {
     if (selected == false)
     {
@@ -73,25 +60,25 @@ void admin_m::on_deleteButton_clicked()
     {
           ui->tableWidget->setFocusPolicy(Qt::NoFocus);
           ui->tableWidget->removeRow(admin_m::row_sel);
-          del(admin_m::row_sel);
+          DeleteUser(admin_m::row_sel);
           selected = false;
     }
     }
 }
 
-void admin_m::on_tableWidget_cellClicked(int row)
+void admin_m::OnTableWidgetCellClicked(int row)
 {
     selected = true;
     admin_m::row_sel = row;
 }
 
-void admin_m::on_addButton_clicked()
+void admin_m::OnAddButtonClicked()
 {
-    e_u->create();
+    e_u->AddUser();
     e_u->show();
 }
 
-void admin_m::on_change_clicked()
+void admin_m::OnChangeClicked()
 {
     if (selected == false)
     {
@@ -100,15 +87,15 @@ void admin_m::on_change_clicked()
     else
     {
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
-    e_u->edit();
+    e_u->EditUser();
     e_u->show();
     selected = false;
     }
 }
 
-void admin_m::on_pushButton_3_clicked()
+void admin_m::FlightManagement()
 {
-    f_m->settable();
+    f_m->SetTable();
     f_m->show();
     this->close();
 }

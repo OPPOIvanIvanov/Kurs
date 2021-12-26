@@ -17,12 +17,11 @@ public:
     ~reg();
 
 signals:
-    void exitpls();
+    void BackButton();
 
 private slots:
-    void on_accept_clicked();
-
-    void on_undo_clicked();
+    void OnAcceptClicked();
+    void OnUndoClicked();
 
 private:
     Ui::reg *ui;

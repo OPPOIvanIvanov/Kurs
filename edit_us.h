@@ -14,15 +14,14 @@ class edit_us : public QWidget
 public:
     explicit edit_us(QWidget *parent = nullptr);
     ~edit_us();
-    void create();
-    void edit();
+    void AddUser();
+    void EditUser();
 signals:
-    void upd();
+    void UpdateUsersTable();
 
 private slots:
-    void on_ok_clicked();
-
-    void on_exit_clicked();
+    void OnOkClicked();
+    void OnExitClicked();
 
 private:
     Ui::edit_us *ui;

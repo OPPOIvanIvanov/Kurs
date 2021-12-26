@@ -1,28 +1,28 @@
 #include "users_db.h"
 
-users_db::users_db()
+UsersDataBase::UsersDataBase()
 {
 
 }
-void load_data(QTextStream &ost)
+void LoadDataBaseUsers(QTextStream &ost)
 {
     int i = 0;
     while(!ost.atEnd())
     {
         MainWindow::dt.resize(i + 1);
-        ost >> MainWindow::dt[i].name >> MainWindow::dt[i].passw;
+        ost >> MainWindow::dt[i].name_ >> MainWindow::dt[i].passw_;
         int x;
         ost >> x;
         switch(x)
         {
         case 0:
-            MainWindow::dt[i].status = pass;
+            MainWindow::dt[i].status_ = pass;
             break;
         case 1:
-            MainWindow::dt[i].status = kass;
+            MainWindow::dt[i].status_ = kass;
             break;
         case 2:
-            MainWindow::dt[i].status = admin;
+            MainWindow::dt[i].status_ = admin;
             break;
         default:
             break;
@@ -31,42 +31,42 @@ void load_data(QTextStream &ost)
     }
 }
 
-st get_status(QString str)
+st FindStatus(QString str)
 {
     for (int i = 0; i < MainWindow::dt.size(); i++)
     {
-        if (MainWindow::dt[i].name == str)
-            return MainWindow::dt[i].status;
+        if (MainWindow::dt[i].name_ == str)
+            return MainWindow::dt[i].status_;
     }
     return unknow;
 }
 
-bool find_us(QString str)
+bool FindUser(QString str)
 {
     for (int i = 0; i < MainWindow::dt.size(); i++)
     {
-        if (MainWindow::dt[i].name == str)
+        if (MainWindow::dt[i].name_ == str)
             return true;
     }
     return false;
 }
 
-void insert(QString n, QString p, st s)
+void InsertUser(QString n, QString p, st s)
 {
     MainWindow::dt.resize(MainWindow::dt.size() + 1);
-    MainWindow::dt[MainWindow::dt.size()-1].name = n;
-    MainWindow::dt[MainWindow::dt.size()-1].passw = p;
-    MainWindow::dt[MainWindow::dt.size()-1].status = s;
+    MainWindow::dt[MainWindow::dt.size()-1].name_ = n;
+    MainWindow::dt[MainWindow::dt.size()-1].passw_ = p;
+    MainWindow::dt[MainWindow::dt.size()-1].status_ = s;
 }
 
-void save_text(QTextStream& ost)
+void SaveToText(QTextStream& ost)
 {
    for (int i = 0; i < MainWindow::dt.size(); i++)
    {
        if (i != 0)
            ost << "\n";
-       ost << MainWindow::dt[i].name << " " << MainWindow::dt[i].passw << " ";
-       switch(MainWindow::dt[i].status)
+       ost << MainWindow::dt[i].name_ << " " << MainWindow::dt[i].passw_ << " ";
+       switch(MainWindow::dt[i].status_)
        {
        case pass:
            ost << 0;
@@ -83,8 +83,27 @@ void save_text(QTextStream& ost)
    }
 }
 
-void del(int index)
+void DeleteUser(int index)
 {
     MainWindow::dt.erase(MainWindow::dt.begin() + index);
-    save();
+    SaveData();
+}
+
+QString GetStatus(st status)
+{
+    switch(status)
+    {
+    case pass:
+        return "Пассажир";
+        break;
+    case kass:
+         return "Кассир";
+        break;
+    case admin:
+        return "Администратор";
+        break;
+    default:
+        return "Неизвество";
+        break;
+    }
 }

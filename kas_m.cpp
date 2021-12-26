@@ -7,9 +7,9 @@
 #include "QMessageBox"
 #include "passengers.h"
 
-QVector<passengers> kas_m::pass_db;
+QVector<PassengersDataBase> kas_m::passengers_data_base;
 bool flight_sel;
-int kas_m::sel_fl;
+int kas_m::selected_flight;
 kas_m::kas_m(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::kas_m)
@@ -17,9 +17,9 @@ kas_m::kas_m(QWidget *parent) :
     ui->setupUi(this);
     l_p = new list_pass;
     k_s = new k_sales;
-    connect(l_p, &list_pass::exitpls, this, &kas_m::show);
-    connect(l_p, &list_pass::upd, this, &kas_m::plantTable);
-    connect(k_s, &k_sales::upd, this, &kas_m::plantTable);
+    connect(l_p, &list_pass::LeaveButton, this, &kas_m::show);
+    connect(l_p, &list_pass::UpdatePassengersTable, this, &kas_m::PlantTable);
+    connect(k_s, &k_sales::UpdateFlightsTable, this, &kas_m::PlantTable);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget->horizontalHeader()->setStretchLastSection(true);
@@ -31,11 +31,11 @@ kas_m::kas_m(QWidget *parent) :
     QFile file_p("D:\\DB\\passengers.txt");
     file_p.open(QIODevice::ReadOnly);
     QTextStream ist(&file_p);
-    load_db(ist);
+    LoadFlightDataBase(ist);
     file_p.close();
 }
 
-void kas_m::plantTable()
+void kas_m::PlantTable()
 {
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
@@ -44,12 +44,12 @@ void kas_m::plantTable()
     for (int i = 0; i < flights::f_db.size(); i++)
     {
         ui->tableWidget->insertRow(i);
-        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(flights::f_db[i].number));
-        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(flights::f_db[i].from));
-        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(flights::f_db[i].to));
-        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(flights::f_db[i].mark));
-        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(flights::f_db[i].seats)));
-        ui->tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(flights::f_db[i].f_seats)));
+        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(flights::f_db[i].number_));
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(flights::f_db[i].from_));
+        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(flights::f_db[i].to_));
+        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(flights::f_db[i].mark_));
+        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(QString::number(flights::f_db[i].seats_)));
+        ui->tableWidget->setItem(i, 5, new QTableWidgetItem(QString::number(flights::f_db[i].free_seats)));
     }
 }
 
@@ -58,20 +58,20 @@ kas_m::~kas_m()
     delete ui;
 }
 
-void kas_m::on_exits_clicked()
+void kas_m::OnExitsClicked()
 {
     ui->tableWidget->setFocusPolicy(Qt::NoFocus);
     this->close();
-    emit exitpls();
+    emit  UpdateKassirTable();
 }
 
-void kas_m::on_tableWidget_cellClicked(int row)
+void kas_m::OnTableWidgetCellClicked(int row)
 {
     flight_sel = true;
-    kas_m::sel_fl = row;
+    kas_m::selected_flight = row;
 }
 
-void kas_m::on_return_b_clicked()
+void kas_m::OnReturnButtonClicked()
 {
     if (flight_sel == false)
     {
@@ -80,14 +80,14 @@ void kas_m::on_return_b_clicked()
     else
     {
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);
-        l_p->setPass();
+        l_p->SetPassengersTable();
         l_p->show();
         flight_sel = false;
         this->close();
     }
 }
 
-void kas_m::on_sale_b_clicked()
+void kas_m::OnSaleButtonClicked()
 {
     if (flight_sel == false)
     {
@@ -97,7 +97,7 @@ void kas_m::on_sale_b_clicked()
     {
         ui->tableWidget->setFocusPolicy(Qt::NoFocus);
         flight_sel = false;
-        k_s->set_num();
+        k_s->SetNumberFlight();
         k_s->show();
     }
 }

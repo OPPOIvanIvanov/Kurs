@@ -18,23 +18,23 @@ edit_f::~edit_f()
     delete ui;
 }
 
-void edit_f::on_pushButton_clicked()
+void edit_f::OkButton()
 {
     bool new_value = true;
     if (ui->num->text() == str)
         new_value = false;
-    if ((!new_value || !find_fl(ui->num->text())) && !ui->num->text().isEmpty() &&
+    if ((!new_value || !CheckFlght(ui->num->text())) && !ui->num->text().isEmpty() &&
           !ui->count->text().isEmpty() && !ui->free->text().isEmpty()
             && !ui->from->text().isEmpty() && !ui->mark->text().isEmpty()
             && !ui->to->text().isEmpty() && (ui->free->text() <= ui->count->text()))
     {
          if (mode)
          {
-             del_f(flights::row_s);
+             DeleteFlight(flights::row_s);
          }
-         insert_fl(ui->num->text(), ui->from->text(), ui->to->text(),
+         InsertFlight(ui->num->text(), ui->from->text(), ui->to->text(),
                    ui->mark->text(), ui->count->text().toInt(), ui->free->text().toInt());
-         save_f();
+         SaveFlight();
          ui->count->clear();
          ui->free->clear();
          ui->from->clear();
@@ -42,10 +42,10 @@ void edit_f::on_pushButton_clicked()
          ui->num->clear();
          ui->to->clear();
          this->close();
-         emit upd();
+         emit UpdateTable();
     }
     else
-        if (new_value && find_fl(ui->num->text()))
+        if (new_value && CheckFlght(ui->num->text()))
          QMessageBox::warning(this, "Внимание","Номер рейса занят");
     else
             if (ui->num->text().isEmpty() || ui->count->text().isEmpty() ||
@@ -58,27 +58,27 @@ void edit_f::on_pushButton_clicked()
                                "Свободных мест не может быть больше общего числа мест");
 }
 
-void edit_f::create_f()
+void edit_f::CreateFlight()
 {
     ui->label_7->setText("Добавление рейса");
     mode = false;
 }
 
-void edit_f::change_f()
+void edit_f::ChangeFlightt()
 
 {
     ui->label_7->setText("Редактирование рейса");
-    str = flights::f_db[flights::row_s].number;
+    str = flights::f_db[flights::row_s].number_;
     mode = true;
-    ui->num->setText(flights::f_db[flights::row_s].number);
-    ui->from->setText(flights::f_db[flights::row_s].from);
-    ui->to->setText(flights::f_db[flights::row_s].to);
-    ui->mark->setText(flights::f_db[flights::row_s].mark);
-    ui->count->setText(QString::number(flights::f_db[flights::row_s].seats));
-    ui->free->setText(QString::number(flights::f_db[flights::row_s].f_seats));
+    ui->num->setText(flights::f_db[flights::row_s].number_);
+    ui->from->setText(flights::f_db[flights::row_s].from_);
+    ui->to->setText(flights::f_db[flights::row_s].to_);
+    ui->mark->setText(flights::f_db[flights::row_s].mark_);
+    ui->count->setText(QString::number(flights::f_db[flights::row_s].seats_));
+    ui->free->setText(QString::number(flights::f_db[flights::row_s].free_seats));
 }
 
-void edit_f::on_pushButton_2_clicked()
+void edit_f::CloseButton()
 {
     this->close();
 }

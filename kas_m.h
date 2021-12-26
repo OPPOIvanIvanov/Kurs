@@ -9,7 +9,7 @@
 namespace Ui {
 class kas_m;
 }
-class passengers;
+class PassengersDataBase;
 class kas_m : public QWidget
 {
     Q_OBJECT
@@ -17,21 +17,18 @@ class kas_m : public QWidget
 public:
     explicit kas_m(QWidget *parent = nullptr);
     ~kas_m();
-    void plantTable();
-    static int sel_fl;
-    static QVector<passengers> pass_db;
+    void PlantTable();
+    static int selected_flight;
+    static QVector<PassengersDataBase> passengers_data_base;
 
 signals:
-    void exitpls();
+    void  UpdateKassirTable();
 
 private slots:
-    void on_exits_clicked();
-
-    void on_tableWidget_cellClicked(int row);
-
-    void on_return_b_clicked();
-
-    void on_sale_b_clicked();
+    void OnExitsClicked();
+    void OnTableWidgetCellClicked(int row);
+    void OnReturnButtonClicked();
+    void OnSaleButtonClicked();
 
 private:
     Ui::kas_m *ui;
