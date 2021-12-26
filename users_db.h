@@ -25,10 +25,10 @@ public:
 
 void LoadDataBaseUsers(QTextStream& ost);
 void InsertUser(QString n, QString p, st s);
-void SaveToText(QTextStream& ost);
-bool FindUser(QString str);
+void SaveToText(QTextStream& pasport);
+bool FindUser(QString name);
 void DeleteUser(int index);
-st FindStatus(QString str);
+st FindStatus(QString name);
 QString GetStatus(st status);
 
 #endif // USERS_DB_H

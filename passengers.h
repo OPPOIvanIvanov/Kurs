@@ -17,7 +17,7 @@ public:
 void LoadDataBase(QTextStream& ost);
 void ReturnTicket(int indx);
 void SaveToTxt(QTextStream& ost);
-bool FindPassengers(QString str, QString str2);
+bool FindPassengers(QString pasport, QString number);
 void InsertPassengers(QString surname, QString name, QString patronymic, QString passport, QString numb_fl);
-bool FindPasport(QString str);
+bool FindPasport(QString pasport);
 #endif // PASSENGERS_H

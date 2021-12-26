@@ -32,11 +32,11 @@ void SaveToTxt(QTextStream& ost)
     }
 }
 
-bool FindPassengers(QString str, QString str2)
+bool FindPassengers(QString pasport, QString number)
 {
     for (int i = 0; i < kas_m::passengers_data_base.size(); i++)
     {
-        if (kas_m::passengers_data_base[i].passport_ == str && kas_m::passengers_data_base[i].numb_flight_ == str2)
+        if (kas_m::passengers_data_base[i].passport_ == pasport && kas_m::passengers_data_base[i].numb_flight_ == number)
             return true;
     }
     return false;
@@ -52,11 +52,11 @@ void InsertPassengers(QString surname, QString name, QString patronymic, QString
     kas_m::passengers_data_base[kas_m::passengers_data_base.size() - 1].numb_flight_ = numb_fl;
 }
 
-bool FindPasport(QString str)
+bool FindPasport(QString pasport)
 {
     for (int i = 0; i < kas_m::passengers_data_base.size(); i++)
     {
-        if (kas_m::passengers_data_base[i].passport_ == str)
+        if (kas_m::passengers_data_base[i].passport_ == pasport)
             return true;
     }
     return false;

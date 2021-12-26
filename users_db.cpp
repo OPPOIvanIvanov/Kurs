@@ -31,21 +31,21 @@ void LoadDataBaseUsers(QTextStream &ost)
     }
 }
 
-st FindStatus(QString str)
+st FindStatus(QString name)
 {
     for (int i = 0; i < MainWindow::dt.size(); i++)
     {
-        if (MainWindow::dt[i].name_ == str)
+        if (MainWindow::dt[i].name_ == name)
             return MainWindow::dt[i].status_;
     }
     return unknow;
 }
 
-bool FindUser(QString str)
+bool FindUser(QString name)
 {
     for (int i = 0; i < MainWindow::dt.size(); i++)
     {
-        if (MainWindow::dt[i].name_ == str)
+        if (MainWindow::dt[i].name_ == name)
             return true;
     }
     return false;
