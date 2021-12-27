@@ -1,0 +1,45 @@
+\hypertarget{flights_8h_source}{}\doxysection{flights.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef FLIGHTS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define FLIGHTS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <flight\_db.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <edit\_f.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }Ui \{}
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{classflights}{flights}};}
+\DoxyCodeLine{10 \}}
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_flight_data_base}{FlightDataBase}};}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classflights}{flights}} : \textcolor{keyword}{public} QWidget}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     Q\_OBJECT}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \textcolor{keyword}{explicit} \mbox{\hyperlink{classflights}{flights}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{18     \mbox{\hyperlink{classflights}{\string~flights}}();}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} \mbox{\hyperlink{classflights_acecf78c4c5552bb963d216ef4a22cd86}{SetTable}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keyword}{static} QVector <FlightDataBase> f\_db;}
+\DoxyCodeLine{23     \textcolor{keyword}{static} \textcolor{keywordtype}{int} row\_s;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 signals:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} PreviousWindow();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} UsersManagement();}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} OnTableWidgetCellClicked(\textcolor{keywordtype}{int} row);}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} OnDelFClicked();}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} OnAddFClicked();}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} OnEdFClicked();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{keyword}{private}:}
+\DoxyCodeLine{37     Ui::flights *ui;}
+\DoxyCodeLine{38     \mbox{\hyperlink{classedit__f}{edit\_f}} * e\_f;}
+\DoxyCodeLine{39 \};}
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} SaveFlight();}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// FLIGHTS\_H}}
+
+\end{DoxyCode}

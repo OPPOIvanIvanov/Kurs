@@ -1,0 +1,35 @@
+\hypertarget{reg_8h_source}{}\doxysection{reg.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef REG\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define REG\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QDebug>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }Ui \{}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{classreg}{reg}};}
+\DoxyCodeLine{9 \}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classreg}{reg}} : \textcolor{keyword}{public} QWidget}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     Q\_OBJECT}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{explicit} \mbox{\hyperlink{classreg}{reg}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{17     \mbox{\hyperlink{classreg}{\string~reg}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 signals:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} BackButton();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} OnAcceptClicked();}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} OnUndoClicked();}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27     Ui::reg *ui;}
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// REG\_H}}
+
+\end{DoxyCode}

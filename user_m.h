@@ -15,6 +15,7 @@ class user_m : public QWidget
 public:
     explicit user_m(QWidget *parent = nullptr);
     ~user_m();
+    ///\brief Заполнить таблицу
     void GetTable();
 static QString text;
 signals:

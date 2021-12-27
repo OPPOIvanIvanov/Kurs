@@ -1,0 +1,28 @@
+\hypertarget{passengers_8h_source}{}\doxysection{passengers.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PASSENGERS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PASSENGERS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QString>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QVector>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QTextStream>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_passengers_data_base}{PassengersDataBase}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     QString surname\_;}
+\DoxyCodeLine{12     QString name\_;}
+\DoxyCodeLine{13     QString patronymic\_;}
+\DoxyCodeLine{14     QString passport\_;}
+\DoxyCodeLine{15     QString numb\_flight\_;}
+\DoxyCodeLine{16 \};}
+\DoxyCodeLine{17 \textcolor{keywordtype}{void} LoadDataBase(QTextStream\& ost);}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} ReturnTicket(\textcolor{keywordtype}{int} indx);}
+\DoxyCodeLine{19 \textcolor{keywordtype}{void} SaveToTxt(QTextStream\& ost);}
+\DoxyCodeLine{20 \textcolor{keywordtype}{bool} FindPassengers(QString pasport, QString number);}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} InsertPassengers(QString surname, QString name, QString patronymic, QString passport, QString numb\_fl);}
+\DoxyCodeLine{22 \textcolor{keywordtype}{bool} FindPasport(QString pasport);}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// PASSENGERS\_H}}
+
+\end{DoxyCode}

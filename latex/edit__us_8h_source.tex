@@ -1,0 +1,34 @@
+\hypertarget{edit__us_8h_source}{}\doxysection{edit\+\_\+us.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef EDIT\_US\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define EDIT\_US\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }Ui \{}
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{classedit__us}{edit\_us}};}
+\DoxyCodeLine{8 \}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classedit__us}{edit\_us}} : \textcolor{keyword}{public} QWidget}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     Q\_OBJECT}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keyword}{explicit} \mbox{\hyperlink{classedit__us}{edit\_us}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{16     \mbox{\hyperlink{classedit__us}{\string~edit\_us}}();}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} \mbox{\hyperlink{classedit__us_a97d367bee3bfed9301aa2296d34af0d8}{AddUser}}();}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{classedit__us_a25e8185b77dc0c2ca48cc80f96767dd7}{EditUser}}();}
+\DoxyCodeLine{21 signals:}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} UpdateUsersTable();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} OnOkClicked();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} OnExitClicked();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29     Ui::edit\_us *ui;}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// EDIT\_US\_H}}
+
+\end{DoxyCode}

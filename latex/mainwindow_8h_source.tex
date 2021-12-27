@@ -1,0 +1,43 @@
+\hypertarget{mainwindow_8h_source}{}\doxysection{mainwindow.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MAINWINDOW\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MAINWINDOW\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QMainWindow>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <users\_db.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <admin\_m.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <kas\_m.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <user\_m.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <reg.h>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }Ui \{ \textcolor{keyword}{class }\mbox{\hyperlink{class_main_window}{MainWindow}}; \}}
+\DoxyCodeLine{13 QT\_END\_NAMESPACE}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_users_data_base}{UsersDataBase}};}
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_main_window}{MainWindow}} : \textcolor{keyword}{public} QMainWindow}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     Q\_OBJECT}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_main_window}{MainWindow}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_main_window}{\string~MainWindow}}();}
+\DoxyCodeLine{23     \textcolor{keyword}{static} QVector<UsersDataBase> dt;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} OnLogInButtonClicked();}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} OnRegistrationButtonClicked();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{30     Ui::MainWindow *ui;}
+\DoxyCodeLine{31     \mbox{\hyperlink{classadmin__m}{admin\_m}} *a\_m;}
+\DoxyCodeLine{32     \mbox{\hyperlink{classkas__m}{kas\_m}} *k\_m;}
+\DoxyCodeLine{33     \mbox{\hyperlink{classuser__m}{user\_m}} *u\_m;}
+\DoxyCodeLine{34     \mbox{\hyperlink{classreg}{reg}} *r;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} SaveData();}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MAINWINDOW\_H}}
+
+\end{DoxyCode}

@@ -18,12 +18,12 @@ signals:
 public:
     explicit admin_m(QWidget *parent = nullptr);
     ~admin_m();
+    ///\brief Метод нужен для заполнения таблицы
     void SeTtable();
 
     static int row_sel;
 
 private slots:
-
     void OnExitsClicked();
     void OnDeleteButtonClicked();
     void OnTableWidgetCellClicked(int row);

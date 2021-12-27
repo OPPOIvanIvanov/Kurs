@@ -14,6 +14,7 @@ class us_flights : public QWidget
 public:
     explicit us_flights(QWidget *parent = nullptr);
     ~us_flights();
+    ///\brief Заполнить таблицу рейсов
     void SetFlightsTable();
 signals:
     void BackButton();

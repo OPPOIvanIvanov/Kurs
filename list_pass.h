@@ -14,6 +14,7 @@ class list_pass : public QWidget
 public:
     explicit list_pass(QWidget *parent = nullptr);
     ~list_pass();
+    ///\brief Заполнить таблицу пассажиров
     void SetPassengersTable();
 
 signals:

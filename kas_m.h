@@ -17,6 +17,7 @@ class kas_m : public QWidget
 public:
     explicit kas_m(QWidget *parent = nullptr);
     ~kas_m();
+    ///\brief Заполнить таблицу
     void PlantTable();
     static int selected_flight;
     static QVector<PassengersDataBase> passengers_data_base;

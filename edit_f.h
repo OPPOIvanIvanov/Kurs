@@ -14,8 +14,9 @@ class edit_f : public QWidget
 public:
     explicit edit_f(QWidget *parent = nullptr);
     ~edit_f();
-
+///\brief Метод предназначен для добавления рейса
     void CreateFlight();
+///\brief Метод предназначен для редактирования рейса
     void ChangeFlightt();
 
 signals:

@@ -14,7 +14,9 @@ class edit_us : public QWidget
 public:
     explicit edit_us(QWidget *parent = nullptr);
     ~edit_us();
+    ///\brief Метод предназначен для добавления пользователя
     void AddUser();
+    ///\brief Метод предназначен для редактирования пользователя
     void EditUser();
 signals:
     void UpdateUsersTable();

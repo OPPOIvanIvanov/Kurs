@@ -1,0 +1,37 @@
+\hypertarget{user__m_8h_source}{}\doxysection{user\+\_\+m.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef USER\_M\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define USER\_M\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <us\_flights.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }Ui \{}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{classuser__m}{user\_m}};}
+\DoxyCodeLine{9 \}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classuser__m}{user\_m}} : \textcolor{keyword}{public} QWidget}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     Q\_OBJECT}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{explicit} \mbox{\hyperlink{classuser__m}{user\_m}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{17     \mbox{\hyperlink{classuser__m}{\string~user\_m}}();}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{classuser__m_a26cf5fe76f40628ad97dfe8e84e08533}{GetTable}}();}
+\DoxyCodeLine{20 \textcolor{keyword}{static} QString text;}
+\DoxyCodeLine{21 signals:}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} BackButton();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} OnExitsClicked();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} OnFlightsPaClicked();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29     Ui::user\_m *ui;}
+\DoxyCodeLine{30     \mbox{\hyperlink{classus__flights}{us\_flights}} *us\_fl;}
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// USER\_M\_H}}
+
+\end{DoxyCode}

@@ -16,7 +16,7 @@ class flights : public QWidget
 public:
     explicit flights(QWidget *parent = nullptr);
     ~flights();
-
+///\brief Метод нужен для заполнения таблицы
 void SetTable();
 
     static QVector <FlightDataBase> f_db;

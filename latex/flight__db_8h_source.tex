@@ -1,0 +1,32 @@
+\hypertarget{flight__db_8h_source}{}\doxysection{flight\+\_\+db.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef FLIGHT\_DB\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define FLIGHT\_DB\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QString>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QVector>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QTextStream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <flights.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_flight_data_base}{FlightDataBase}}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     QString number\_;}
+\DoxyCodeLine{13     QString from\_;}
+\DoxyCodeLine{14     QString to\_;}
+\DoxyCodeLine{15     QString mark\_;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} seats\_;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} free\_seats;}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} LoadFlightDataBase(QTextStream\& ost);}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} DeleteFlight(\textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{22 \textcolor{keywordtype}{void} SaveDataToText(QTextStream\& ost);}
+\DoxyCodeLine{23 \textcolor{keywordtype}{int} FindIndexFromNumber(QString number);}
+\DoxyCodeLine{24 \textcolor{keywordtype}{bool} CheckFlght(QString number);}
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} InsertFlight(QString number, QString from, QString to, QString mark, \textcolor{keywordtype}{int} seats, \textcolor{keywordtype}{int} f\_seats);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// FLIGHT\_DB\_H}}
+
+\end{DoxyCode}
